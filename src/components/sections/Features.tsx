@@ -1,45 +1,66 @@
+import Card from "../ui/Card";
+import SectionTitle from "../ui/SectionTitle";
+import {
+  WandSparkles,
+  Search,
+  Gauge,
+} from "lucide-react";
+
 const features = [
   {
-    title: "AI Proposal Writing",
+    icon: WandSparkles,
+    title: "AI Proposal Generator",
     description:
-      "Generate professional proposals tailored to each client."
+      "Generate personalized proposals in seconds.",
   },
   {
-    title: "Client Analysis",
+    icon: Search,
+    title: "Job Analysis",
     description:
-      "Understand job requirements and highlight your strengths."
+      "Understand exactly what the client wants.",
   },
   {
-    title: "Proposal Improvement",
+    icon: Gauge,
+    title: "Proposal Score",
     description:
-      "Rewrite proposals to make them clearer and more persuasive."
-  }
+      "See how well your proposal matches the job.",
+  },
 ];
-
 
 export default function Features() {
   return (
-    <section id="features" className="px-6 py-20">
+    <section
+      id="features"
+      className="bg-white px-6 py-24"
+    >
+      <SectionTitle
+        badge="Features"
+        title="Everything you need to win more clients"
+        subtitle="ProposalAI helps freelancers create better proposals faster."
+      />
 
-      <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-3">
+      <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-3">
+        {features.map((feature) => {
+          const Icon = feature.icon;
 
-        {features.map((feature) => (
-          <div
-            key={feature.title}
-            className="rounded-xl bg-white p-6 shadow"
-          >
-            <h3 className="text-xl font-bold">
-              {feature.title}
-            </h3>
+          return (
+            <Card key={feature.title}>
+              <Icon
+                size={42}
+                className="text-blue-600"
+              />
 
-            <p className="mt-3 text-gray-600">
-              {feature.description}
-            </p>
-          </div>
-        ))}
+              <h3 className="mt-6 text-xl font-bold">
+                {feature.title}
+              </h3>
 
+              <p className="mt-3 text-slate-600">
+                {feature.description}
+              </p>
+            </Card>
+          );
+        })}
       </div>
-
     </section>
   );
 }
